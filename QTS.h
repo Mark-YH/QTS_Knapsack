@@ -5,8 +5,8 @@
 #ifndef QTS_KNAPSACK_QTS_H
 #define QTS_KNAPSACK_QTS_H
 
-#define ROUND 200 // number of how many rounds to execute QTS
-#define POPULATION_SIZE 100 // number of population
+#define ROUND 500 // number of how many rounds to execute QTS
+#define POPULATION_SIZE 300 // number of population
 #define KNAPSACK_SIZE 275 // number of max knapsack size
 #define SEQUENCE_LENGTH 100 // length of solution sequence
 
@@ -19,6 +19,7 @@
  */
 #define DEBUG_MODE 0
 #define EACH_ROUND_RESULT 0
+#define EPIN_OUTPUT 0
 
 typedef struct Solution {
     int sol[SEQUENCE_LENGTH];
