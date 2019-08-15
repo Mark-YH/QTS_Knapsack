@@ -7,6 +7,7 @@
 #include <random>
 #include <iomanip>
 #include <cstring>
+#include <fstream>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ Solution population[POPULATION_SIZE]; // population pool
 Solution bestSolution;
 Solution worstSolution;
 double pMatrix[SEQUENCE_LENGTH]; // probability matrix
+ofstream fileOut;
 
 int myRandom(int, int); // return a random number and its range is [param 1, param 2]
 
@@ -230,6 +232,34 @@ void showResult() {
          << "\t fitness: " << bestSolution.fitness << endl;
 }
 
+void fileOpen() {
+    fileOut.open("../output/result.epin", ios::out);
+    fileOut << "Particle : " << endl;
+}
+
+void outputEPIN(int round) {
+    fileOut << '*' << (round + 1) << ' ';
+    fileOut << bestSolution.fitness << ": ";
+    for (int i = 0; i < POPULATION_SIZE; i++) {
+        fileOut << population[i].fitness << ' ';
+        fileOut << "Bag" << (i + 1) << ' ';
+        for (int j = 0; j < SEQUENCE_LENGTH; j++) {
+            fileOut << population[i].sol[j] << ',';
+            fileOut << fixed << setprecision(1) << pMatrix[j] << ',';
+            fileOut << "bit" << (j + 1);
+            if (j == SEQUENCE_LENGTH - 1)
+                fileOut << '/';
+            else
+                fileOut << ' ';
+        }
+    }
+    fileOut << endl;
+}
+
+void fileClose() {
+    fileOut.close();
+}
+
 void prtPMatrix() {
     cout << "========== Probability Matrix ==========" << endl;
     for (int i = 0; i < SEQUENCE_LENGTH; i++) {
@@ -250,3 +280,11 @@ int myRandom(int start, int end) {
     uniform_int_distribution<int> dis(start, end);
     return dis(gen);
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ * */

@@ -5,8 +5,8 @@
 #ifndef QTS_KNAPSACK_QTS_H
 #define QTS_KNAPSACK_QTS_H
 
-#define ROUND 100 // number of how many rounds to execute QTS
-#define POPULATION_SIZE 200 // number of population
+#define ROUND 200 // number of how many rounds to execute QTS
+#define POPULATION_SIZE 100 // number of population
 #define KNAPSACK_SIZE 275 // number of max knapsack size
 #define SEQUENCE_LENGTH 100 // length of solution sequence
 
@@ -20,7 +20,7 @@
 #define DEBUG_MODE 0
 #define EACH_ROUND_RESULT 0
 
-typedef struct Solution{
+typedef struct Solution {
     int sol[SEQUENCE_LENGTH];
     int weight;
     int value;
@@ -38,6 +38,12 @@ void measure();
 void calcFitness();
 
 void update();
+
+void fileOpen();
+
+void outputEPIN(int);
+
+void fileClose();
 
 void prtPMatrix();
 

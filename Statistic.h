@@ -5,7 +5,7 @@
 #ifndef QTS_KNAPSACK_STATISTIC_H
 #define QTS_KNAPSACK_STATISTIC_H
 
-#define STATISTICAL_ROUND 10 // how many times you wanna execute QTS
+#define STATISTICAL_ROUND 1 // how many times you wanna execute QTS
 
 bool isOverweight(int);
 

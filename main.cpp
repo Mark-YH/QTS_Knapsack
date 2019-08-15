@@ -11,6 +11,8 @@ int main() {
 
     for (int i = 0; i < STATISTICAL_ROUND; i++) {
         cout << "Round " << (i + 1) << "/" << STATISTICAL_ROUND << endl;
+
+        fileOpen();
         init();
 
         for (int j = 0; j < ROUND; j++) {
@@ -18,6 +20,7 @@ int main() {
             calcFitness();
             update();
 //            prtPMatrix();
+            outputEPIN(j);
         }
 
 #if EACH_ROUND_RESULT
@@ -28,6 +31,7 @@ int main() {
     }
 
     finalResult();
+    fileClose();
 
     // count execution time
     auto end = chrono::steady_clock::now();
