@@ -107,10 +107,6 @@ void finalResult() {
     }
 
     for (int i = 0; i < SEQUENCE_LENGTH; i++) {
-        cout << bestSequence[i] << '\t';
-        if ((i + 1) % 10 == 0)
-            cout << endl;
-
         if (bestSequence[i] == 1) {
             if (i < 10) {
                 count[0]++;

@@ -16,6 +16,7 @@ int main() {
         init();
 
         for (int j = 0; j < ROUND; j++) {
+            cout << "round: " << j << endl;
             measure();
             calcFitness();
             update();
