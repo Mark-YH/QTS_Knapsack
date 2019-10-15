@@ -3,7 +3,6 @@
 #include <iostream>
 #include <time.h>
 
-
 using namespace std;
 
 int main() {
@@ -17,10 +16,13 @@ int main() {
         init();
 
         for (int j = 0; j < ROUND; j++) {
+            cout << "round: " << j << endl;
             measure();
             calcFitness();
             update();
-//            prtPMatrix();
+#if DEBUG_MODE
+            prtPMatrix();
+#endif
 #if EPIN_OUTPUT
             outputEPIN(j);
 #endif

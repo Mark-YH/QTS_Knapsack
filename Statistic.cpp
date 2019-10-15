@@ -26,7 +26,7 @@ bool isOverweight(int w) {
 // statistic of result of total rounds
 void statistic() {
     Solution *best;
-    best = getBestSolution();
+    best = getFinalBest();
 
     // check if it is overweight
     if (isOverweight(best->weight)) {
@@ -62,7 +62,7 @@ void prtLine() {
 void finalResult() {
     cout << "==================== STATISTIC ====================\n";
 
-    cout << "Statistical round: " << STATISTICAL_ROUND << endl;
+    cout << "Statistic round: " << STATISTICAL_ROUND << endl;
     cout << "Round: " << ROUND << endl;
     cout << "Population: " << POPULATION_SIZE << endl;
 
@@ -90,10 +90,10 @@ void finalResult() {
 
     cout << '|'
          << setw(9) << cntOverweight << " |"    // col. 1
-         << setw(7) << fixed << setprecision(2) << cntOverweight / (float) STATISTICAL_ROUND * 100  // col. 2
+         << setw(7) << fixed << setprecision(2) << cntOverweight / (double) STATISTICAL_ROUND * 100  // col. 2
          << setw(2) << " %" << " |"
          << setw(9) << bestWeight << " |"       // col. 3
-         << setw(9) << setprecision(2) << totalValue / (float) STATISTICAL_ROUND << " |"    // col. 4
+         << setw(9) << setprecision(2) << totalValue / (double) STATISTICAL_ROUND << " |"    // col. 4
          << setw(9) << bestValue << " |"        // col. 5
          << setw(9) << bestFitness << " |"      // col. 6
          << setw(9) << cntBestCase << " |" << endl; // col. 7

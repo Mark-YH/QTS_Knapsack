@@ -6,7 +6,7 @@
 #define QTS_KNAPSACK_QTS_H
 
 #define ROUND 500 // number of how many rounds to execute QTS
-#define POPULATION_SIZE 300 // number of population
+#define POPULATION_SIZE 20 // number of population
 #define KNAPSACK_SIZE 275 // number of max knapsack size
 #define SEQUENCE_LENGTH 100 // length of solution sequence
 
@@ -50,7 +50,6 @@ void prtPMatrix();
 
 void showResult(); // print result of current statistical round
 
-Solution *getBestSolution();
-
+Solution *getFinalBest();
 
 #endif //QTS_KNAPSACK_QTS_H
