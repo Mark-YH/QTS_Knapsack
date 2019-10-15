@@ -5,7 +5,7 @@
 #ifndef QTS_KNAPSACK_QTS_H
 #define QTS_KNAPSACK_QTS_H
 
-#define ROUND 500 // number of how many rounds to execute QTS
+#define ROUND 100 // number of how many rounds to execute QTS
 #define POPULATION_SIZE 20 // number of population
 #define KNAPSACK_SIZE 275 // number of max knapsack size
 #define SEQUENCE_LENGTH 100 // length of solution sequence
