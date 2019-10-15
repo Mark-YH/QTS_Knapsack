@@ -14,6 +14,7 @@ using namespace std;
 Solution population[POPULATION_SIZE]; // population pool
 Solution bestSolution;
 Solution worstSolution;
+Solution finalBest;
 double pMatrix[SEQUENCE_LENGTH]; // probability matrix
 ofstream fileOut;
 
@@ -28,6 +29,7 @@ void init() {
     }
     bestSolution.fitness = 0;
     worstSolution.fitness = 620;
+    finalBest.fitness = 0;
 }
 
 // measure solution's sequence
@@ -62,6 +64,10 @@ void measure() {
  *
  */
 void calcFitness() {
+    // reset the best case and the worst case at this round
+    bestSolution.fitness = 0;
+    worstSolution.fitness = 620;
+
     for (int i = 0; i < POPULATION_SIZE; i++) {
         population[i].weight = 0;
         population[i].value = 0;
@@ -108,15 +114,13 @@ void calcFitness() {
             processOW(&population[i]);
         }
 
-        // reset worst solution
-        worstSolution.fitness = 620;
-
         // check if the best and the worst solution changed
         if (population[i].fitness > bestSolution.fitness)
             memcpy(&bestSolution, &population[i], sizeof(population[i]));
-        else if (population[i].fitness < worstSolution.fitness) {
+        if (population[i].fitness < worstSolution.fitness)
             memcpy(&worstSolution, &population[i], sizeof(Solution));
-        }
+        if (bestSolution.fitness > finalBest.fitness)
+            memcpy(&finalBest, &bestSolution, sizeof(bestSolution));
     }
 }
 
@@ -161,8 +165,6 @@ void processOW(Solution *p) {
             if (p->weight <= KNAPSACK_SIZE) {
                 p->fitness = p->value;
                 break;
-            } else {
-                continue;
             }
         }
     }
@@ -269,8 +271,8 @@ void prtPMatrix() {
     }
 }
 
-Solution *getBestSolution() {
-    return &bestSolution;
+Solution *getFinalBest() {
+    return &finalBest;
 }
 
 // return a random number and its range is [start, end]
@@ -280,11 +282,3 @@ int myRandom(int start, int end) {
     uniform_int_distribution<int> dis(start, end);
     return dis(gen);
 }
-
-/**
- *
- *
- *
- *
- *
- * */
